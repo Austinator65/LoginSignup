@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="571.0" style="-fx-background-color: #16495E; -fx-text-fill:: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginsignup.controller.LoginController">
+   <children>
+      <TextField fx:id="userNameField" alignment="TOP_LEFT" layoutX="178.0" layoutY="193.0" opacity="0.49" prefHeight="25.0" prefWidth="216.0" promptText="Enter Your Username" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-color: black; -fx-border-width: 0 0 2 0; -fx-text-fill: white;">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </TextField>
+      <Button fx:id="loginLoginBtn" layoutX="236.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #9CE3FF;" text="Login">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="loginSigupBtn" layoutX="236.0" layoutY="369.0" mnemonicParsing="false" onAction="#signUpBtn" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #9CE3FF;" text="Sign Up">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="211.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons8-anonymous-500.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="58.0" layoutX="130.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons8-test-account-96.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="38.0" layoutX="130.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons8-password-96.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="passwordField" layoutX="178.0" layoutY="246.0" opacity="0.49" prefHeight="37.0" prefWidth="216.0" promptText="Enter Your Password" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-color: black; -fx-border-width: 0 0 2 0; -fx-text-fill: white;">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </PasswordField>
+      <Label fx:id="textTxtField" layoutX="176.0" layoutY="285.0" prefHeight="30.0" prefWidth="378.0" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

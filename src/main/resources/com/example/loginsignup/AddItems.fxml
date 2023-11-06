@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainPane" prefHeight="766.0" prefWidth="965.0" style="-fx-background-color: #16495E;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginsignup.controller.AddItemsController">
+   <children>
+      <Pane layoutX="55.0" layoutY="31.0" prefHeight="705.0" prefWidth="886.0" style="-fx-background-radius: 30px; -fx-background-color: #216C8C;">
+         <children>
+            <Text fill="WHITE" layoutX="349.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task List">
+               <font>
+                  <Font name="Times New Roman" size="50.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Text>
+            <ImageView fitHeight="93.0" fitWidth="200.0" layoutX="396.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8-todo-list-96.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+            <AnchorPane fx:id="rootPane" layoutX="25.0" layoutY="194.0">
+               <children>
+                  <Pane prefHeight="491.0" prefWidth="835.0">
+                     <children>
+                        <ImageView fx:id="addBtn" fitHeight="127.0" fitWidth="121.0" layoutX="357.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons8-add-button-96.png" />
+                           </image>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                        <Text fx:id="noText" layoutX="263.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Task for today, yet!">
+                           <font>
+                              <Font name="Times New Roman" size="33.0" />
+                           </font>
+                        </Text>
+                        <ButtonBar layoutX="43.0" layoutY="49.0" prefHeight="40.0" prefWidth="200.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+            <Text layoutX="78.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="55.0" fitWidth="56.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons8-test-account-96.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
