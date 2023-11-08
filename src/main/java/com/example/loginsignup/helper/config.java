@@ -1,6 +1,6 @@
 package com.example.loginsignup.helper;
 
-public class config {
+public class Config {
     protected String dbHost = "localhost";
     protected String dbPort = "3306";
     protected String dbUser = "root";

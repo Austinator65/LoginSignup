@@ -7,11 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-public class DBHandler extends config {
+public class DBHandler extends Config {
     static private Connection connection;
     // static private DBHandler dbHandler;
     // static private Connection connection;
     static private PreparedStatement preparedStatement;
+    private static int userId;
 
     public Connection getDbconnection() throws SQLException {
         String connectionUrl = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName + "?" + dbTimezone;
@@ -35,21 +36,42 @@ public class DBHandler extends config {
         preparedStatement.setString(4, email);
         preparedStatement.setString(5, password);
         preparedStatement.executeUpdate();
+
     }
 
-    public static void insertTask(int userid, String task, String description, Timestamp datecreated)
+    public static void insertTask(String task, String description, Timestamp datecreated)
             throws SQLException {
         DBHandler dbHandler = new DBHandler();
+
         connection = dbHandler.getDbconnection();
         String insert = "INSERT INTO task(userid,datecreated,description,task)" +
                 "VALUES(?,?,?,?)";
 
         preparedStatement = (PreparedStatement) connection.prepareStatement(insert);
-        preparedStatement.setInt(1, userid);
+        preparedStatement.setInt(1, userId);
         preparedStatement.setTimestamp(2, datecreated);
         preparedStatement.setString(3, description);
         preparedStatement.setString(4, task);
         preparedStatement.executeUpdate();
+    }
+
+    public static int countTask() throws SQLException {
+        DBHandler dbHandler = new DBHandler();
+
+        connection = dbHandler.getDbconnection();
+
+        String insert = "SELECT count(*) FROM task where userid = ?";
+
+        preparedStatement = connection.prepareStatement(insert);
+        preparedStatement.setInt(1, userId);
+        // preparedStatement.executeUpdate();
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            System.out.println(count);
+            return count;
+        }
+        return resultSet.getInt(1);
     }
 
     public static int userId(String userName) throws SQLException {
@@ -61,11 +83,12 @@ public class DBHandler extends config {
         preparedStatement.setString(1, userName);
 
         ResultSet resultSet = preparedStatement.executeQuery();
-
         while (resultSet.next()) {
-            return resultSet.getInt("userid");
+            int v = resultSet.getInt("userid");
+            return v;
         }
         return -1;
+
     }
 
     public static String checkUser(String userName, String password) throws SQLException {
@@ -83,7 +106,7 @@ public class DBHandler extends config {
         while (resultSet.next()) {
 
             if (resultSet.getString("username") != null && resultSet.getString("password") != null) {
-
+                userId = resultSet.getInt("userid");
                 return resultSet.getString("username");
             } else {
                 return null;

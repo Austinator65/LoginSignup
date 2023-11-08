@@ -37,38 +37,40 @@ public class LoginController {
     @FXML
     private Label textTxtField;
 
-    public void setUserid(int id) {
-        this.id = id;
-    }
+    // public void setUserid(int id) {
+    // this.id = id;
+    // }
 
-    public int getUserid() {
-        return id;
+    // public int getUserid() {
+    // return id;
+    // }
+
+    private void showAddItemsScreen() {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(MainApp.class.getResource("AddItems.fxml"));
+        try {
+
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Application");
+            stage.setScene(scene);
+            loginLoginBtn.getScene().getWindow().hide();
+            // AddItemsController addItemsController = fxmlLoader.getController();
+            // addItemsController.setUserid(id);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void loginUser(String loginUsername, String loginPass) throws SQLException {
         String result = DBHandler.checkUser(loginUsername, loginPass);
-        int userid = DBHandler.userId(loginUsername);
+        id = DBHandler.userId(loginUsername);
+
         if (result != null) {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("AddItems.fxml"));
-            try {
 
-                // System.out.println(id);
-
-                AddItemsFormController addItemsFormController;
-                addItemsFormController = new AddItemsFormController();
-                // addItemsFormController.id = userid;
-                addItemsFormController.setUserid(userid);
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setTitle("Application");
-                stage.setScene(scene);
-                loginLoginBtn.getScene().getWindow().hide();
-                stage.showAndWait();
-                // return userid;
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            showAddItemsScreen();
         } else {
 
             textTxtField.setText("Invalid credentials, Please try again!");
@@ -109,6 +111,7 @@ public class LoginController {
             if (!loginUsername.equals("") || !loginPass.equals("")) {
                 try {
                     loginUser(loginUsername, loginPass);
+                    // setUserid();
 
                 } catch (SQLException e) {
                     e.printStackTrace();
